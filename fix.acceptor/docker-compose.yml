@@ -1,6 +1,7 @@
 
 services:
   fix-acceptor:
+    image: fix-protocol-server
     build: .
     platform: linux/amd64
     container_name: fix-protocol-server
