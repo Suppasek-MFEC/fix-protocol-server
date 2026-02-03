@@ -2,6 +2,7 @@
 services:
   fix-acceptor:
     build: .
+    platform: linux/amd64
     container_name: fix-protocol-server
     ports:
       - "${FIX_PORT:-9876}:${FIX_PORT:-9876}"
