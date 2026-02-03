@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  fix-acceptor:
+    build: .
+    container_name: fix-protocol-server
+    ports:
+      - "${FIX_PORT:-9876}:${FIX_PORT:-9876}"
+    environment:
+      - FIX_PORT=9876
+      - SENDER_COMP_ID=MY_SERVER
+      - TARGET_COMP_ID=MY_CLIENT
+      - VALIDATE_USER_DEFINED_FIELDS=N
+      - START_TIME=00:00:00
+      - END_TIME=00:00:00
+      - SCREEN_LOG_SHOW_HEART_BEATS=N
+      - USE_DATA_DICTIONARY=Y
+    volumes:
+      - ./log:/app/log
+      - ./data:/app/data
+      - ./store:/app/store
+    restart: always
